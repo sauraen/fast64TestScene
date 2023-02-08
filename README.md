@@ -12,7 +12,7 @@ and are hereby dedicated to the public domain.
 - Export the scene over your preferred scene in the decomp (choose a "normal"
   scene which does not have any hard-coded attributes in the game, such as
   Link's house).
-- **Replace scene render function XX with the contents of `render_function.c`.**
+- **Replace scene render function Scene_DrawConfigPotionShopGranny with the contents of `render_function.c`.** (Or, replace a different render function and change the scene in Blender to use the one you selected.)
 - Build the ROM.
 - Run the ROM on a flashcart on a real N64 or on an accurate LLE emulator.
 - Enter the scene and ensure that all the "paintings" are visible and match
