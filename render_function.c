@@ -19,7 +19,7 @@ void Scene_DrawConfigPotionShopGranny(PlayState* play) {
     }else{
         i = 0;
     }
-    gSPSegment(POLY_OPA_DISP++, 0x08, SEGMENTED_TO_VIRTUAL(sFlipCI4Textures[i]));
+    gSPSegment(POLY_OPA_DISP++, 0x08, SEGMENTED_TO_VIRTUAL(sTrafficLightTexArr[i]));
     
     // Eyes
     i = gameplayFrames;
@@ -32,15 +32,19 @@ void Scene_DrawConfigPotionShopGranny(PlayState* play) {
     if(i >= 5) i -= 5;
     if(i >= 5) i = 0;
     lastEyes = i;
-    gSPSegment(POLY_OPA_DISP++, 0x09, SEGMENTED_TO_VIRTUAL(sFlipIA8Textures[i]));
+    gSPSegment(POLY_OPA_DISP++, 0x09, SEGMENTED_TO_VIRTUAL(sEyesTexArr[i]));
     
     // Ocean
     i = (gameplayFrames >> 4) & 1;
-    gSPSegment(POLY_OPA_DISP++, 0x0A, SEGMENTED_TO_VIRTUAL(sFlipTwoCI4Textures[i]));
+    gSPSegment(POLY_OPA_DISP++, 0x0A, SEGMENTED_TO_VIRTUAL(sOceanTexArr[i]));
     // Boat
     i = 63 - ((gameplayFrames >> 2) & 63);
     gDPSetTileSize(effectsList + 0, 1, i*4, 0, (i+63)*4, 15*4);
     gSPEndDisplayList(effectsList + 1);
+    
+    // Light shafts
+    i = (gameplayFrames >> 4) % 3;
+    gSPSegment(POLY_OPA_DISP++, 0x0C, SEGMENTED_TO_VIRTUAL(sLightShaftTexArr[i]));
     
     CLOSE_DISPS(play->state.gfxCtx, "fast64TestScene", 0);
 }
