@@ -20,6 +20,13 @@ void Scene_DrawConfigPotionShopGranny(PlayState* play) {
         i = 0;
     }
     gSPSegment(POLY_OPA_DISP++, 0x08, SEGMENTED_TO_VIRTUAL(sTrafficLightTexArr[i]));
+    // Gradient
+    i = gameplayFrames >> 4;
+    i ^= i >> 1;
+    i ^= i >> 2;
+    i ^= i >> 4;
+    i &= 1;
+    gSPSegment(POLY_OPA_DISP++, 0x0B, SEGMENTED_TO_VIRTUAL(sGradTexArr[i]));
     
     // Eyes
     i = gameplayFrames;
